@@ -85,9 +85,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p>lecture2主要讲解函数调用过程，纯函数、非纯函数，从环境角度解释函数调用等。</p>
 <hr>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> ### <strong>分析代码 <code class="notranslate">print(print(1), print(2))</code> 的执行过程和输出结果。</strong></li>
-</ul>
+<h3><strong>分析代码 <code class="notranslate">print(print(1), print(2))</code> 的执行过程和输出结果。</strong></h3>
 <h3><strong>背景：非纯函数</strong></h3>
 <ol>
 <li>
@@ -166,7 +164,11 @@ None None
 <li><code class="notranslate">print</code> 函数有副作用：打印到屏幕。</li>
 <li><code class="notranslate">print</code> 函数的返回值是 <code class="notranslate">None</code>，可以被其他函数使用。</li>
 <li>嵌套调用时，先执行内层函数，副作用和返回值逐步传递到外层。</li>
-</ol></div>
+</ol>
+<hr>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> ###<strong>关于 变量作用域 和 闭包 的问题</strong></li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
