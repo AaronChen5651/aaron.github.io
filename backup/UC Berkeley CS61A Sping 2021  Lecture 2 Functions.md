@@ -64,11 +64,12 @@ None None
 
 ### **关于 变量作用域 和 闭包 的问题**
 
+【python技巧060】形象理解闭包，玩转闭包
+
+https://www.bilibili.com/video/BV1Vx4y1u7YX/?spm_id_from=333.337.search-card.all.click&vd_source=8d6caf2fc8a5b1cb6a27b567749e948b
 
 
 
 
 
-
-
-
+**_### 完_**
