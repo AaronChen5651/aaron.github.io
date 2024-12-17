@@ -268,7 +268,55 @@ return f(x) 返回的是 函数 f 执行后的结果，即 f(x) 的计算值。<
 <ul>
 <li>使用 <code class="notranslate">return f</code> 返回函数对象，而不是直接调用 <code class="notranslate">f(x)</code>。</li>
 </ul>
-<p>这样就能正确地实现闭包的功能。</p></div>
+<p>这样就能正确地实现闭包的功能。</p>
+<hr>
+<hr>
+<h3><strong>控制语句 Control</strong></h3>
+<p>条件表达式  三元表达式 A if B else C :<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/ff1bdf96-c55e-430b-bee2-7e07ab9c9e81"><img src="https://github.com/user-attachments/assets/ff1bdf96-c55e-430b-bee2-7e07ab9c9e81" alt="image" style="max-width: 100%;"></a></p>
+<h3><strong>关于True Values</strong></h3>
+<p>false value 包括:<br>
+False<br>
+None<br>
+0<br>
+Empty strings, sets, lists, tuples, and dictionaries<br>
+其他全是true value</p>
+<hr>
+<h3><strong>A if B else C 举例代码分析</strong></h3>
+<p>这段代码包含了两个条件表达式（Python 的三元运算符 <code class="notranslate">A if B else C</code>），整体是一个比较表达式：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c1">13</span> <span class="pl-k">if</span> <span class="pl-c1">0</span> <span class="pl-k">else</span> <span class="pl-c1">5</span> <span class="pl-c1">==</span> <span class="pl-c1">13</span> <span class="pl-k">if</span> [] <span class="pl-k">else</span> <span class="pl-c1">5</span></pre></div>
+<ol>
+<li>
+<p><strong>左侧部分：<code class="notranslate">13 if 0 else 5</code></strong></p>
+<ul>
+<li>条件 <code class="notranslate">0</code> 是布尔值 <strong><code class="notranslate">False</code></strong>。</li>
+<li>因此，选择 <code class="notranslate">else</code> 后的值 <code class="notranslate">5</code>。</li>
+</ul>
+<p><strong>结果</strong>：左侧为 <code class="notranslate">5</code>。</p>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>
+<p><strong>右侧部分：<code class="notranslate">13 if [] else 5</code></strong></p>
+<ul>
+<li>条件 <code class="notranslate">[]</code> 是空列表，在布尔上下文中，它也是 <strong><code class="notranslate">False</code></strong>。</li>
+<li>因此，选择 <code class="notranslate">else</code> 后的值 <code class="notranslate">5</code>。</li>
+</ul>
+<p><strong>结果</strong>：右侧为 <code class="notranslate">5</code>。</p>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li><strong>比较运算：<code class="notranslate">5 == 5</code></strong>
+<ul>
+<li>左侧和右侧的结果都是 <code class="notranslate">5</code>，所以 <code class="notranslate">5 == 5</code> 为 <strong><code class="notranslate">True</code></strong>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3><strong>最终结果</strong></h3>
+<p>输出 <strong><code class="notranslate">True</code></strong>。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

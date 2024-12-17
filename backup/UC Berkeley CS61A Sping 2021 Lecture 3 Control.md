@@ -199,3 +199,51 @@ print(result)  # 输出 5 + 6 = 11
 - 使用 `return f` 返回函数对象，而不是直接调用 `f(x)`。
 
 这样就能正确地实现闭包的功能。
+
+---
+---
+### **控制语句 Control**
+条件表达式  三元表达式 A if B else C :
+![image](https://github.com/user-attachments/assets/ff1bdf96-c55e-430b-bee2-7e07ab9c9e81)
+
+### **关于True Values**
+false value 包括:
+False
+None
+0
+Empty strings, sets, lists, tuples, and dictionaries
+其他全是true value
+
+---
+
+### **A if B else C 举例代码分析**
+
+这段代码包含了两个条件表达式（Python 的三元运算符 `A if B else C`），整体是一个比较表达式：
+
+```python
+13 if 0 else 5 == 13 if [] else 5
+```
+
+1. **左侧部分：`13 if 0 else 5`**
+   - 条件 `0` 是布尔值 **`False`**。
+   - 因此，选择 `else` 后的值 `5`。
+
+   **结果**：左侧为 `5`。
+
+---
+
+2. **右侧部分：`13 if [] else 5`**
+   - 条件 `[]` 是空列表，在布尔上下文中，它也是 **`False`**。
+   - 因此，选择 `else` 后的值 `5`。
+
+   **结果**：右侧为 `5`。
+
+---
+
+3. **比较运算：`5 == 5`**
+   - 左侧和右侧的结果都是 `5`，所以 `5 == 5` 为 **`True`**。
+
+---
+
+### **最终结果**
+输出 **`True`**。
