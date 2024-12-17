@@ -15,6 +15,7 @@ for example：
 ![屏幕截图 2024-12-17 114451](https://github.com/user-attachments/assets/f19c7928-68f6-4753-9118-5ef3482f9ae1)
 
 ---
+---
 
 
 ### **环境中的绑定和求值（Binding and Evaluation）**
@@ -28,6 +29,7 @@ for example：
 for example：
 ![屏幕截图 2024-12-17 114451](https://github.com/user-attachments/assets/f19c7928-68f6-4753-9118-5ef3482f9ae1)
 
+---
 ---
 
 
@@ -111,6 +113,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>for example：<br>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f19c7928-68f6-4753-9118-5ef3482f9ae1"><img src="https://github.com/user-attachments/assets/f19c7928-68f6-4753-9118-5ef3482f9ae1" alt="屏幕截图 2024-12-17 114451" style="max-width: 100%;"></a></p>
 <hr>
+<hr>
 <h3><strong>环境中的绑定和求值（Binding and Evaluation）</strong></h3>
 <h3>1. <strong>变量赋值（Assigning）</strong></h3>
 <ul>
@@ -153,7 +156,78 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><strong>def语句</strong>：函数定义时绑定名称，并记录定义时的环境。</li>
 <li><strong>函数调用</strong>：创建局部环境，将参数绑定到实参，并连接到父环境。</li>
 </ol>
-<p>这种机制确保了程序可以正确地查找变量和参数值，形成一个清晰的环境链条。</p></div>
+<p>这种机制确保了程序可以正确地查找变量和参数值，形成一个清晰的环境链条。</p>
+<hr>
+<hr>
+<h3><strong>局部环境</strong></h3>
+<p>函数调用时会<strong>创建新的局部环境</strong>，这是为了确保函数执行时的<strong>数据独立性</strong>和<strong>局部作用域</strong>，从而实现函数的正确行为和可重复使用。下面详细解释为什么会创建局部环境：</p>
+<h3>1. <strong>数据独立性（隔离变量）</strong></h3>
+<p>函数的局部环境可以保证<strong>局部变量与外部变量隔离</strong>，不会相互影响。</p>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">foo</span>(<span class="pl-s1">x</span>):
+    <span class="pl-s1">y</span> <span class="pl-c1">=</span> <span class="pl-s1">x</span> <span class="pl-c1">+</span> <span class="pl-c1">2</span>
+    <span class="pl-k">return</span> <span class="pl-s1">y</span>
+
+<span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-en">foo</span>(<span class="pl-c1">3</span>)  <span class="pl-c"># 调用时，x = 3，y 只在这个调用中存在</span>
+<span class="pl-s1">b</span> <span class="pl-c1">=</span> <span class="pl-en">foo</span>(<span class="pl-c1">5</span>)  <span class="pl-c"># 调用时，x = 5，这是新的局部环境</span></pre></div>
+<ul>
+<li>在调用 <code class="notranslate">foo(3)</code> 时，局部环境绑定 <code class="notranslate">x = 3</code>，<code class="notranslate">y = 5</code>。</li>
+<li>在调用 <code class="notranslate">foo(5)</code> 时，<strong>新的局部环境</strong>绑定 <code class="notranslate">x = 5</code>，<code class="notranslate">y = 7</code>。</li>
+<li>局部变量 <code class="notranslate">x</code> 和 <code class="notranslate">y</code> 只存在于每次函数调用的局部环境中，互不干扰。</li>
+</ul>
+<p><strong>原因</strong>：如果不创建局部环境，那么同名变量会在多个调用中互相覆盖，导致错误结果。</p>
+<hr>
+<h3>2. <strong>函数的参数绑定</strong></h3>
+<p>函数调用时，参数（形式参数）需要与传入的值（实际参数）进行绑定。这一绑定过程发生在新的<strong>局部环境</strong>中。</p>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">add</span>(<span class="pl-s1">a</span>, <span class="pl-s1">b</span>):
+    <span class="pl-k">return</span> <span class="pl-s1">a</span> <span class="pl-c1">+</span> <span class="pl-s1">b</span>
+
+<span class="pl-en">add</span>(<span class="pl-c1">2</span>, <span class="pl-c1">3</span>)  <span class="pl-c"># 局部环境绑定：a = 2, b = 3</span>
+<span class="pl-en">add</span>(<span class="pl-c1">5</span>, <span class="pl-c1">7</span>)  <span class="pl-c"># 局部环境绑定：a = 5, b = 7</span></pre></div>
+<ul>
+<li>每次调用 <code class="notranslate">add</code> 时，都会创建一个新的局部环境，分别绑定不同的参数值。</li>
+<li>这些绑定保证了函数可以处理不同的输入值，而不会影响其他调用。</li>
+</ul>
+<hr>
+<h3>3. <strong>递归调用的需要</strong></h3>
+<p>如果没有新的局部环境，递归调用无法实现，因为每一层递归调用都需要独立的参数和中间状态。</p>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">factorial</span>(<span class="pl-s1">n</span>):
+    <span class="pl-k">if</span> <span class="pl-s1">n</span> <span class="pl-c1">==</span> <span class="pl-c1">1</span>:
+        <span class="pl-k">return</span> <span class="pl-c1">1</span>
+    <span class="pl-k">return</span> <span class="pl-s1">n</span> <span class="pl-c1">*</span> <span class="pl-en">factorial</span>(<span class="pl-s1">n</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span>)
+
+<span class="pl-en">factorial</span>(<span class="pl-c1">3</span>)</pre></div>
+<ul>
+<li>调用 <code class="notranslate">factorial(3)</code>：创建局部环境，绑定 <code class="notranslate">n = 3</code>。</li>
+<li>调用 <code class="notranslate">factorial(2)</code>：再次创建新的局部环境，绑定 <code class="notranslate">n = 2</code>。</li>
+<li>调用 <code class="notranslate">factorial(1)</code>：再创建新的局部环境，绑定 <code class="notranslate">n = 1</code>。</li>
+<li>每个局部环境独立存储参数 <code class="notranslate">n</code> 的值和计算过程，最终将结果返回。</li>
+</ul>
+<p><strong>原因</strong>：如果没有独立的局部环境，不同递归层次的 <code class="notranslate">n</code> 就会互相覆盖，导致无法正确求值。</p>
+<hr>
+<h3>4. <strong>函数的可复用性</strong></h3>
+<p>创建新的局部环境可以确保函数可以在不同上下文中调用，并返回正确的结果。</p>
+<p><strong>示例</strong>：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">square</span>(<span class="pl-s1">x</span>):
+    <span class="pl-k">return</span> <span class="pl-s1">x</span> <span class="pl-c1">*</span> <span class="pl-s1">x</span>
+
+<span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-en">square</span>(<span class="pl-c1">2</span>)  <span class="pl-c"># 创建局部环境，x = 2</span>
+<span class="pl-s1">b</span> <span class="pl-c1">=</span> <span class="pl-en">square</span>(<span class="pl-c1">4</span>)  <span class="pl-c"># 创建新的局部环境，x = 4</span></pre></div>
+<ul>
+<li>局部环境的创建保证了 <code class="notranslate">square(2)</code> 和 <code class="notranslate">square(4)</code> 可以独立执行，不会相互影响。</li>
+</ul>
+<hr>
+<h3>5. <strong>总结：为什么会创建新的局部环境？</strong></h3>
+<p>函数调用时创建新的局部环境的根本原因是：</p>
+<ol>
+<li><strong>隔离局部变量</strong>，保证数据独立，不影响其他函数调用。</li>
+<li><strong>参数绑定</strong>，将实际参数传递给形式参数。</li>
+<li><strong>支持递归</strong>，为每一层调用保存独立的状态。</li>
+<li><strong>提高可复用性</strong>，使函数能够独立运行。</li>
+</ol>
+<p>局部环境使函数调用成为一个<strong>封闭的计算单元</strong>，有效管理变量作用域，保证程序的正确性和可维护性。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

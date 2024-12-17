@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>AARON's BLOG</title><link>https://AaronChen5651.github.io/aaron.github.io</link><description>----------------------</description><copyright>AARON's BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://AaronChen5651.github.io/aaron.github.io</link></image><lastBuildDate>Tue, 17 Dec 2024 03:56:06 +0000</lastBuildDate><managingEditor>AARON's BLOG</managingEditor><ttl>60</ttl><webMaster>AARON's BLOG</webMaster><item><title>UC Berkeley CS61A Sping 2021 Lecture 3 Control</title><link>https://AaronChen5651.github.io/aaron.github.io/post/UC%20Berkeley%20CS61A%20Sping%202021%20Lecture%203%20Control.html</link><description>### **环境链条（Environment Chain）**&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>AARON's BLOG</title><link>https://AaronChen5651.github.io/aaron.github.io</link><description>----------------------</description><copyright>AARON's BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://AaronChen5651.github.io/aaron.github.io</link></image><lastBuildDate>Tue, 17 Dec 2024 04:09:30 +0000</lastBuildDate><managingEditor>AARON's BLOG</managingEditor><ttl>60</ttl><webMaster>AARON's BLOG</webMaster><item><title>UC Berkeley CS61A Sping 2021 Lecture 3 Control</title><link>https://AaronChen5651.github.io/aaron.github.io/post/UC%20Berkeley%20CS61A%20Sping%202021%20Lecture%203%20Control.html</link><description>### **环境链条（Environment Chain）**&#13;
 for example：&#13;
 ![屏幕截图 2024-12-17 114451](https://github.com/user-attachments/assets/f19c7928-68f6-4753-9118-5ef3482f9ae1)&#13;
 &#13;
+---&#13;
 ---&#13;
 &#13;
 &#13;
