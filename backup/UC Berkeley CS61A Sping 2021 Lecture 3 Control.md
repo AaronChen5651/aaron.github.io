@@ -247,3 +247,14 @@ Empty strings, sets, lists, tuples, and dictionaries
 
 ### **最终结果**
 输出 **`True`**。
+
+---
+---
+
+2. short-circuit evaluation
+left and right 和 left or right 的短路特性
+![image](https://github.com/user-attachments/assets/42c360d5-8752-415c-884f-af270aede6c6)
+
+
+left and right：先计算left，如果left为false，表达式的值为left，不计算right的值（不判断right是否有意义，如1/0）；否则，表达式值为right。
+left or right： 先计算left，如果left为true，表达式的值为left，不计算right的值（不判断right是否有意义，如1/0）；否则，表达式值为right。

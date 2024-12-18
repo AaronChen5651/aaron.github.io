@@ -316,7 +316,16 @@ Empty strings, sets, lists, tuples, and dictionaries<br>
 </ol>
 <hr>
 <h3><strong>最终结果</strong></h3>
-<p>输出 <strong><code class="notranslate">True</code></strong>。</p></div>
+<p>输出 <strong><code class="notranslate">True</code></strong>。</p>
+<hr>
+<hr>
+<ol start="2">
+<li>short-circuit evaluation<br>
+left and right 和 left or right 的短路特性<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/42c360d5-8752-415c-884f-af270aede6c6"><img src="https://github.com/user-attachments/assets/42c360d5-8752-415c-884f-af270aede6c6" alt="image" style="max-width: 100%;"></a></li>
+</ol>
+<p>left and right：先计算left，如果left为false，表达式的值为left，不计算right的值（不判断right是否有意义，如1/0）；否则，表达式值为right。<br>
+left or right： 先计算left，如果left为true，表达式的值为left，不计算right的值（不判断right是否有意义，如1/0）；否则，表达式值为right。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
