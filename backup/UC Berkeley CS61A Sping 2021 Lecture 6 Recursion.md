@@ -9,3 +9,9 @@ f2的parent是f1，因为f1call的是print_sums(n)，f2call的是next_sum(k) ，
 call到next_sum了于是来到第三行，（n+k）其中的n没有在f2里定义，但是在其parent的f1里面定义了，所以下一行会是print_sums(4)，于是运行第四行，是个return，调用的是print_sums函数，注意，parent是根据你调用的这个函数来走的，所以f3的parent是global（根据print_sums来判定的）。
 
 调用print_sums，于是来到第一行，运行print_sums(4)，第二行print(4)输出4，第三行定义next_sum，注意此时next_sum是在f3作为parent的环境里面定义的，里面参数要用 f3的了，感觉这一步就是递归的精髓。于是就是在f4框架运行 next_sum(5)，5是第七行那个5，来到第三行，在第四行创建框架f5运行print_sum(4+5)，来到第一行，最后print(9)。最后的返回值其实是fun next_sum(k) [parent = f5]，但没用上而已。
+
+PPT上的解释：
+
+![Image](https://github.com/user-attachments/assets/5524f38c-b1d0-4de5-be50-43396c90053b)
+
+---
