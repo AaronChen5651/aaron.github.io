@@ -61,3 +61,11 @@ print(curry2(add)(30))
 ```
 
 它表示一个 lambda 函数的内存地址。
+---
+为了看得清楚，他把lambda x和lambda y写到两行去，下面是只运行第一个print的时候的情况
+
+![Image](https://github.com/user-attachments/assets/41dafbbf-8b55-4185-8fb8-76b131948add)
+
+下面是运行第二个print的情况
+
+![Image](https://github.com/user-attachments/assets/1e63dd33-8849-4a21-9327-744145cefa5b)
