@@ -69,3 +69,30 @@ print(curry2(add)(30))
 下面是运行第二个print的情况
 
 ![Image](https://github.com/user-attachments/assets/1e63dd33-8849-4a21-9327-744145cefa5b)
+
+
+---
+
+下一个话题，函数的哲学和规范
+
+![Image](https://github.com/user-attachments/assets/04892cf8-be79-42fb-b74f-b35df436814e)
+
+这张图展示了函数的哲学和规范，重点讲解了 **语法规范（Syntactic specification）** 和 **语义规范（Semantic specification）** 的概念。具体解释如下：
+
+### 1. **语法规范（Syntactic specification）**
+   - 语法规范描述了如何调用函数（例如参数的数量和类型）。这包括函数的**签名**，也就是定义函数时指定的名称和参数。
+   - 在代码中，`def sqrt(x):` 就是一个函数签名，它告诉我们该函数的名称是 `sqrt`，并且它接受一个参数 `x`。
+
+### 2. **语义规范（Semantic specification）**
+   - 语义规范告诉我们函数的实际功能或行为，明确了函数的**预条件（Preconditions）**和**后条件（Postconditions）**。
+     - **预条件（Precondition）**：是函数执行前必须满足的要求。在这个例子中，预条件是 `Assuming X >= 0`，表示输入的 `x` 必须大于等于 0。
+     - **后条件（Postcondition）**：是函数执行后承诺的结果或保证。在这个例子中，后条件是 `returns approximation to square root of X`，即函数将返回 `x` 的平方根的近似值。
+
+### 3. **合同（Contract）**
+   - 语法和语义规范共同定义了调用者与函数实现者之间的“合同”。
+   - 合同指定了函数的使用规则，即调用者需要提供什么样的输入（预条件），以及函数会返回什么样的输出（后条件）。
+
+### 总结：
+- **语法规范** 描述了如何正确地调用函数（参数的数量和类型）。
+- **语义规范** 描述了函数的行为，具体来说，就是函数应该如何处理输入并返回什么样的结果。
+- 预条件和后条件共同定义了调用函数时的要求和函数执行后应满足的承诺。
