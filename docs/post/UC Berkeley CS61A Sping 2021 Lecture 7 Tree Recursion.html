@@ -107,19 +107,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>对于 <code class="notranslate">fibonacci(5)</code>，它将计算 <code class="notranslate">fibonacci(4)</code> 和 <code class="notranslate">fibonacci(3)</code>，然后再分别计算这两个值。</li>
 <li>每次 <code class="notranslate">fibonacci</code> 函数调用会继续调用两个子问题（<code class="notranslate">fibonacci(n-1)</code> 和 <code class="notranslate">fibonacci(n-2)</code>），从而形成一棵递归调用的“树”。</li>
 </ul>
-<p>递归树如下：</p>
-<pre class="notranslate"><code class="notranslate">                 fibonacci(5)
-            /                          \
-fibonacci(4)                       fibonacci(3)
-   /              \                              /             \
-</code></pre>
+<p>递归树如下：<br>
+fibonacci(5)<br>
+/          <br>
+fibonacci(4)    fibonacci(3)<br>
+/      \         /      <br>
+fibonacci(3) fibonacci(2) fibonacci(2) fibonacci(1)<br>
+/    \        /      \       /     <br>
+fibonacci(2) fibonacci(1) fibonacci(1) fibonacci(0)</p>
 </li>
 </ul>
-<p>fibonacci(3) fibonacci(2) fibonacci(2) fibonacci(1)<br>
-。。。</p>
 <h3>树形递归的计算成本：</h3>
 <ul>
-<li>在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，<code class="notranslate">fibonacci(3)</code> 被调用了两次，而 <code class="notranslate">fibonacci(2)</code> 被调用了四次。这样会导致冗余的计算。</li>
+<li>在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，<code class="notranslate">fibonacci(3)</code> 被调用了两次，而 <code class="notranslate">fibonacci(2)</code> 被调用了三次。这样会导致冗余的计算。</li>
 <li>可以通过<strong>记忆化</strong>（memoization）或<strong>动态规划</strong>（dynamic programming）来优化树形递归，避免重复计算。</li>
 </ul>
 <h3>其他树形递归的例子：</h3>

@@ -21,17 +21,17 @@ def fibonacci(n):
   - 每次 `fibonacci` 函数调用会继续调用两个子问题（`fibonacci(n-1)` 和 `fibonacci(n-2)`），从而形成一棵递归调用的“树”。
   
   递归树如下：
-
-  ```
-                   fibonacci(5)
-              /                          \
-  fibonacci(4)                       fibonacci(3)
-     /              \                              /             \
+          fibonacci(5)
+         /          \
+  fibonacci(4)    fibonacci(3)
+     /      \         /      \
 fibonacci(3) fibonacci(2) fibonacci(2) fibonacci(1)
-。。。
+  /    \        /      \       /     \
+fibonacci(2) fibonacci(1) fibonacci(1) fibonacci(0)
+
 
 ### 树形递归的计算成本：
-- 在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，`fibonacci(3)` 被调用了两次，而 `fibonacci(2)` 被调用了四次。这样会导致冗余的计算。
+- 在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，`fibonacci(3)` 被调用了两次，而 `fibonacci(2)` 被调用了三次。这样会导致冗余的计算。
 - 可以通过**记忆化**（memoization）或**动态规划**（dynamic programming）来优化树形递归，避免重复计算。
 
 ### 其他树形递归的例子：
