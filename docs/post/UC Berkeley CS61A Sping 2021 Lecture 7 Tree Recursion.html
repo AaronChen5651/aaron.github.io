@@ -108,31 +108,37 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>每次 <code class="notranslate">fibonacci</code> 函数调用会继续调用两个子问题（<code class="notranslate">fibonacci(n-1)</code> 和 <code class="notranslate">fibonacci(n-2)</code>），从而形成一棵递归调用的“树”。</li>
 </ul>
 <p>递归树如下：</p>
-<pre class="notranslate"><code class="notranslate">        fibonacci(5)
-       /          \
-fibonacci(4)    fibonacci(3)
-   /      \         /      \
+<pre class="notranslate"><code class="notranslate">                 fibonacci(5)
+            /                          \
+fibonacci(4)                       fibonacci(3)
+   /              \                              /             \
 </code></pre>
 </li>
 </ul>
 <p>fibonacci(3) fibonacci(2) fibonacci(2) fibonacci(1)<br>
-/    \        /      \       /     <br>
-fibonacci(2) fibonacci(1) fibonacci(1) fibonacci(0)</p>
-<pre class="notranslate"><code class="notranslate">
-### 树形递归的计算成本：
-- 在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，`fibonacci(3)` 被调用了两次，而 `fibonacci(2)` 被调用了四次。这样会导致冗余的计算。
-- 可以通过**记忆化**（memoization）或**动态规划**（dynamic programming）来优化树形递归，避免重复计算。
-
-### 其他树形递归的例子：
-1. **汉诺塔问题（Tower of Hanoi）**：
-- 每次递归调用都会把问题分成多个子问题，因此可以看作是树形递归。
-
-2. **排列与组合（Permutations and Combinations）**：
-- 求排列或组合问题时，递归会分别计算多个选择，从而形成树状结构。
-
-### 总结：
-树形递归的特征是每个递归调用都会生成多个子问题，这些子问题会再次递归调用，最终形成一个递归树结构。它可以用来解决许多复杂的问题，但也可能带来重复计算的问题，需要优化以提高效率。
-</code></pre></div>
+。。。</p>
+<h3>树形递归的计算成本：</h3>
+<ul>
+<li>在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，<code class="notranslate">fibonacci(3)</code> 被调用了两次，而 <code class="notranslate">fibonacci(2)</code> 被调用了四次。这样会导致冗余的计算。</li>
+<li>可以通过<strong>记忆化</strong>（memoization）或<strong>动态规划</strong>（dynamic programming）来优化树形递归，避免重复计算。</li>
+</ul>
+<h3>其他树形递归的例子：</h3>
+<ol>
+<li>
+<p><strong>汉诺塔问题（Tower of Hanoi）</strong>：</p>
+<ul>
+<li>每次递归调用都会把问题分成多个子问题，因此可以看作是树形递归。</li>
+</ul>
+</li>
+<li>
+<p><strong>排列与组合（Permutations and Combinations）</strong>：</p>
+<ul>
+<li>求排列或组合问题时，递归会分别计算多个选择，从而形成树状结构。</li>
+</ul>
+</li>
+</ol>
+<h3>总结：</h3>
+<p>树形递归的特征是每个递归调用都会生成多个子问题，这些子问题会再次递归调用，最终形成一个递归树结构。它可以用来解决许多复杂的问题，但也可能带来重复计算的问题，需要优化以提高效率。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

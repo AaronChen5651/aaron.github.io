@@ -23,14 +23,12 @@ def fibonacci(n):
   递归树如下：
 
   ```
-          fibonacci(5)
-         /          \
-  fibonacci(4)    fibonacci(3)
-     /      \         /      \
+                   fibonacci(5)
+              /                          \
+  fibonacci(4)                       fibonacci(3)
+     /              \                              /             \
 fibonacci(3) fibonacci(2) fibonacci(2) fibonacci(1)
-  /    \        /      \       /     \
-fibonacci(2) fibonacci(1) fibonacci(1) fibonacci(0)
-   ```
+。。。
 
 ### 树形递归的计算成本：
 - 在树形递归中，许多子问题会被重复计算。以斐波那契数列为例，`fibonacci(3)` 被调用了两次，而 `fibonacci(2)` 被调用了四次。这样会导致冗余的计算。
