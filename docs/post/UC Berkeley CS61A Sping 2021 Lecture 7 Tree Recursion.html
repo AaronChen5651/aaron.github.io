@@ -138,7 +138,118 @@ fibonacci(2) fibonacci(1) fibonacci(1) fibonacci(0)</p>
 </li>
 </ol>
 <h3>总结：</h3>
-<p>树形递归的特征是每个递归调用都会生成多个子问题，这些子问题会再次递归调用，最终形成一个递归树结构。它可以用来解决许多复杂的问题，但也可能带来重复计算的问题，需要优化以提高效率。</p></div>
+<p>树形递归的特征是每个递归调用都会生成多个子问题，这些子问题会再次递归调用，最终形成一个递归树结构。它可以用来解决许多复杂的问题，但也可能带来重复计算的问题，需要优化以提高效率。</p>
+<hr>
+<p>一个问题，和上面的tree recurtion好像没啥联系</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/fc33cee3-f92a-444c-a214-e71301cf7b88"><img src="https://github.com/user-attachments/assets/fc33cee3-f92a-444c-a214-e71301cf7b88" alt="Image" style="max-width: 100%;"></a></p>
+<p>然后利用FUNC是non-decreasing（单调不减）的特点，怎么能让这个速度快一点？<br>
+下面这个方法还是一个尾递归，因为即便有两个调用，但是只执行了其中一个</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/519e764a-614b-4c12-bf7a-19117323ac41"><img src="https://github.com/user-attachments/assets/519e764a-614b-4c12-bf7a-19117323ac41" alt="Image" style="max-width: 100%;"></a></p>
+<hr>
+<p>这个问题是一个找路的问题，是tree recurtion的一个例子，比较繁琐</p>
+<p>这道题是一个经典的 <strong>路径计数问题</strong>，具体目标是计算从某个起始位置到达目标位置的<strong>不被阻挡的路径数</strong>。题目给定了一个 <strong>网格</strong>，并且网格中的某些格子被<strong>阻挡</strong>，不能通过。我们需要递归地计算所有可能的路径，并返回能够到达目标位置的路径数量。</p>
+<h3>题目目标：</h3>
+<ul>
+<li>
+<p><strong>输入</strong>：</p>
+<ul>
+<li>一个 <strong>网格</strong>，其中某些格子被<strong>阻挡</strong>，表示为 <code class="notranslate">blocked(x, y)</code>，如果位置 <code class="notranslate">(x, y)</code> 被阻挡或者超出网格边界，返回 <code class="notranslate">True</code>，否则返回 <code class="notranslate">False</code>。</li>
+<li>起始位置 <code class="notranslate">(x0, y0)</code>，表示路径开始的位置。</li>
+<li>目标位置是 <code class="notranslate">(x1, 0)</code>，即目标始终在第一行。</li>
+</ul>
+</li>
+<li>
+<p><strong>输出</strong>：</p>
+<ul>
+<li>从 <code class="notranslate">(x0, y0)</code> 到达 <code class="notranslate">(x1, 0)</code> 的所有不被阻挡的路径的数量。</li>
+</ul>
+</li>
+</ul>
+<h3>解题思路：</h3>
+<ol>
+<li>
+<p><strong>递归</strong>：</p>
+<ul>
+<li>使用递归来探索从当前位置 <code class="notranslate">(x0, y0)</code> 到目标 <code class="notranslate">(x1, 0)</code> 的所有路径。</li>
+<li>对于每个位置 <code class="notranslate">(x0, y0)</code>，有三个可能的方向可以尝试：向左上（<code class="notranslate">(x0-1, y0-1)</code>），向上（<code class="notranslate">(x0, y0-1)</code>），向右上（<code class="notranslate">(x0+1, y0-1)</code>）。</li>
+<li>每次递归都尝试这些方向，直到找到目标位置或者到达被阻挡的格子。</li>
+</ul>
+</li>
+<li>
+<p><strong>递归基准条件</strong>：</p>
+<ul>
+<li>如果当前位置 <code class="notranslate">(x0, y0)</code> 被阻挡，返回 0，表示无法通过此位置。</li>
+<li>如果 <code class="notranslate">y0 == 0</code>（到达目标行），返回 1，表示找到一条有效路径。</li>
+<li>否则，继续递归尝试三个方向。</li>
+</ul>
+</li>
+<li>
+<p><strong>路径计数</strong>：</p>
+<ul>
+<li>对于每个位置 <code class="notranslate">(x0, y0)</code>，递归地计算从该位置出发的所有路径，将其结果加总。</li>
+</ul>
+</li>
+</ol>
+<h3>递归实现：</h3>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">num_paths</span>(<span class="pl-s1">blocked</span>, <span class="pl-s1">x0</span>, <span class="pl-s1">y0</span>):
+    <span class="pl-s">"""返回从 (x0, y0) 到达 (x1, 0) 的路径数量，不能通过被阻挡的格子。"""</span>
+    
+    <span class="pl-k">if</span> <span class="pl-en">blocked</span>(<span class="pl-s1">x0</span>, <span class="pl-s1">y0</span>):  <span class="pl-c"># 如果当前位置被阻挡，返回 0</span>
+        <span class="pl-k">return</span> <span class="pl-c1">0</span>
+    <span class="pl-k">elif</span> <span class="pl-s1">y0</span> <span class="pl-c1">==</span> <span class="pl-c1">0</span>:  <span class="pl-c"># 如果到达目标行，返回 1</span>
+        <span class="pl-k">return</span> <span class="pl-c1">1</span>
+    <span class="pl-k">else</span>:  <span class="pl-c"># 否则递归地检查三个可能的方向</span>
+        <span class="pl-k">return</span> (<span class="pl-en">num_paths</span>(<span class="pl-s1">blocked</span>, <span class="pl-s1">x0</span><span class="pl-c1">-</span><span class="pl-c1">1</span>, <span class="pl-s1">y0</span><span class="pl-c1">-</span><span class="pl-c1">1</span>) <span class="pl-c1">+</span>  <span class="pl-c"># 向左上</span>
+                <span class="pl-en">num_paths</span>(<span class="pl-s1">blocked</span>, <span class="pl-s1">x0</span>, <span class="pl-s1">y0</span><span class="pl-c1">-</span><span class="pl-c1">1</span>) <span class="pl-c1">+</span>    <span class="pl-c"># 向上</span>
+                <span class="pl-en">num_paths</span>(<span class="pl-s1">blocked</span>, <span class="pl-s1">x0</span><span class="pl-c1">+</span><span class="pl-c1">1</span>, <span class="pl-s1">y0</span><span class="pl-c1">-</span><span class="pl-c1">1</span>))   <span class="pl-c"># 向右上</span></pre></div>
+<h3>解释：</h3>
+<ol>
+<li><strong><code class="notranslate">blocked(x0, y0)</code></strong>：判断当前位置 <code class="notranslate">(x0, y0)</code> 是否被阻挡，如果被阻挡则返回 <code class="notranslate">0</code>，表示不能经过此位置。</li>
+<li><strong>基准条件</strong>：
+<ul>
+<li><strong><code class="notranslate">y0 == 0</code></strong>：如果 <code class="notranslate">y0</code> 等于 0，表示我们已经到达目标行，返回 1，表示找到一条路径。</li>
+<li><strong><code class="notranslate">blocked(x0, y0)</code></strong>：如果当前位置被阻挡，则不能继续前进，返回 0。</li>
+</ul>
+</li>
+<li><strong>递归调用</strong>：
+<ul>
+<li>对于当前位置 <code class="notranslate">(x0, y0)</code>，我们递归地检查三个方向的路径：
+<ul>
+<li>向左上方：<code class="notranslate">num_paths(blocked, x0-1, y0-1)</code></li>
+<li>向上：<code class="notranslate">num_paths(blocked, x0, y0-1)</code></li>
+<li>向右上方：<code class="notranslate">num_paths(blocked, x0+1, y0-1)</code></li>
+</ul>
+</li>
+<li>将这三个递归结果相加，表示从当前位置可以到达目标位置的所有路径数。</li>
+</ul>
+</li>
+</ol>
+<h3>例子：</h3>
+<p>假设给定的网格如下，其中被阻挡的位置用黑色圆点表示：</p>
+<pre class="notranslate"><code class="notranslate">0 1 2 3 4 5 6 7 8 9
+-------------------
+0 |   ● ● ● ● ● ● |
+1 |   ●           |
+2 |     ●         |
+3 |   ●     ●     |
+4 |   ●           |
+5 | ●             |
+6 |   ● ● ● ● ● ● |
+</code></pre>
+<h3>例1：</h3>
+<ul>
+<li>假设我们从 <code class="notranslate">(5, 6)</code> 开始，目标是到达 <code class="notranslate">y0 == 0</code>（第一行）。</li>
+<li><code class="notranslate">num_paths(M, 5, 6)</code> 返回 1，表示存在 1 条路径。</li>
+</ul>
+<h3>例2：</h3>
+<ul>
+<li>给定一个不同的网格 <code class="notranslate">M2</code>，<code class="notranslate">num_paths(M2, 5, 6)</code> 返回 5，表示存在 5 条不被阻挡的路径。</li>
+</ul>
+<h3>总结：</h3>
+<ul>
+<li>这个问题通过递归方法，逐步计算从起始点到目标点的所有不被阻挡的路径。</li>
+<li>递归的核心在于探索当前点的三个可能方向，并累加这些方向上的路径数。</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
