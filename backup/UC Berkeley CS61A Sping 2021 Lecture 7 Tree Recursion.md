@@ -138,3 +138,17 @@ def num_paths(blocked, x0, y0):
 ### 总结：
 - 这个问题通过递归方法，逐步计算从起始点到目标点的所有不被阻挡的路径。
 - 递归的核心在于探索当前点的三个可能方向，并累加这些方向上的路径数。
+
+---
+下一个tree recurtion问题，如何找出一个数用整数拆分的各种可能（现在拆分的数的大小）
+
+![Image](https://github.com/user-attachments/assets/4fc9a5f8-8ed1-4b6c-aa94-58b03097de39)
+比如这个拆分6里面限制最大数是3
+
+解法如下，注意看他是怎么思考的
+
+![Image](https://github.com/user-attachments/assets/896a6c0a-a209-4c94-b9e4-574a5ee6ef4f)
+
+根据上面这里的思路，他写出来的代码是这样的
+
+![Image](https://github.com/user-attachments/assets/d495ce3f-9fea-4c8f-9d39-b99a940210aa)
