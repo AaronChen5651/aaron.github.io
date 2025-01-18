@@ -174,7 +174,172 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li><strong>语法规范</strong> 描述了如何正确地调用函数（参数的数量和类型）。</li>
 <li><strong>语义规范</strong> 描述了函数的行为，具体来说，就是函数应该如何处理输入并返回什么样的结果。</li>
 <li>预条件和后条件共同定义了调用函数时的要求和函数执行后应满足的承诺。</li>
-</ul></div>
+</ul>
+<hr>
+<p>简单线性递归</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f8e54fe2-3855-4ee4-ada6-84bd13d4fe4d"><img src="https://github.com/user-attachments/assets/f8e54fe2-3855-4ee4-ada6-84bd13d4fe4d" alt="Image" style="max-width: 100%;"></a></p>
+<p>这张图展示了<strong>简单线性递归</strong>的概念，并通过一个示例函数 <code class="notranslate">sum_squares(N)</code> 来演示。以下是详细解释：</p>
+<h3>1. <strong>递归函数 <code class="notranslate">sum_squares(N)</code></strong>：</h3>
+<ul>
+<li>该函数的目标是计算从 1 到 <code class="notranslate">N</code>（包括 <code class="notranslate">N</code>）的所有整数的平方和。</li>
+<li>函数的定义如下：
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">sum_squares</span>(<span class="pl-c1">N</span>):
+    <span class="pl-k">if</span> <span class="pl-c1">N</span> <span class="pl-c1">&lt;</span> <span class="pl-c1">1</span>:
+        <span class="pl-k">return</span> <span class="pl-c1">0</span>
+    <span class="pl-k">else</span>:
+        <span class="pl-k">return</span> <span class="pl-en">sum_squares</span>(<span class="pl-c1">N</span> <span class="pl-c1">-</span> <span class="pl-c1">1</span>) <span class="pl-c1">+</span> <span class="pl-c1">N</span><span class="pl-c1">**</span><span class="pl-c1">2</span></pre></div>
+<ul>
+<li><strong>递归基准条件（Base case）</strong>：当 <code class="notranslate">N &lt; 1</code> 时，函数返回 0。这个条件停止递归过程，防止无限递归。</li>
+<li><strong>递归步骤</strong>：如果 <code class="notranslate">N &gt;= 1</code>，函数调用自身 <code class="notranslate">sum_squares(N - 1)</code>，并将当前数字 <code class="notranslate">N</code> 的平方加到结果中。</li>
+</ul>
+</li>
+</ul>
+<h3>2. <strong>递归展开示例</strong>：</h3>
+<ul>
+<li>假设我们要计算 <code class="notranslate">sum_squares(3)</code>，函数的执行过程会展开如下：
+<ul>
+<li><code class="notranslate">sum_squares(3)</code> 等于 <code class="notranslate">sum_squares(2) + 3^2</code>，即 <code class="notranslate">sum_squares(2) + 9</code></li>
+<li><code class="notranslate">sum_squares(2)</code> 等于 <code class="notranslate">sum_squares(1) + 2^2</code>，即 <code class="notranslate">sum_squares(1) + 4</code></li>
+<li><code class="notranslate">sum_squares(1)</code> 等于 <code class="notranslate">sum_squares(0) + 1^2</code>，即 <code class="notranslate">sum_squares(0) + 1</code></li>
+<li><code class="notranslate">sum_squares(0)</code> 返回 0（这是递归基准条件）。</li>
+<li>所以，最终计算结果为：<code class="notranslate">0 + 1^2 + 2^2 + 3^2 = 14</code></li>
+</ul>
+</li>
+</ul>
+<h3>3. <strong>递归的本质</strong>：</h3>
+<ul>
+<li>递归意味着一个函数在其定义过程中调用自己（直接或间接）。</li>
+<li>在上面的例子中，<code class="notranslate">sum_squares</code> 函数直接调用自身，以处理较小的 <code class="notranslate">N</code> 值，直到达到基准条件为止。</li>
+</ul>
+<h3>4. <strong>环境框架</strong>：</h3>
+<ul>
+<li>每一次递归调用都会生成一个新的环境框架（环境变量的上下文）。每个递归调用都有自己的函数实例，并且栈中的每个框架都会保存当前的 <code class="notranslate">N</code> 值和返回值。</li>
+<li>这些框架（在图中的“Python Tutor”示例中）会彼此链接，形成递归调用的链条。</li>
+</ul>
+<h3>总结：</h3>
+<ul>
+<li><strong>简单线性递归</strong> 是一种递归方式，其中每个函数调用都只会调用一次自己。这个过程直到满足基准条件停止递归。</li>
+<li>递归的关键是通过重复的自我调用来逐步减少问题的规模，最终到达一个已知的简单情况（基准条件）。</li>
+</ul>
+<hr>
+<p>尾递归 tail recurtion</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/c2d22b33-cb0f-4ede-be9b-542b8e9a9176"><img src="https://github.com/user-attachments/assets/c2d22b33-cb0f-4ede-be9b-542b8e9a9176" alt="Image" style="max-width: 100%;"></a></p>
+<p>这张图展示了**尾递归（Tail Recursion）**的概念，并通过一个平方和的例子进行了比较。以下是对图中内容的解释：</p>
+<ol>
+<li>
+<p>尾递归（Tail Recursion）：<br>
+尾递归是递归的一种特殊形式，其中递归调用是函数的最后一步，即递归调用是函数的返回值，或者是递归调用之后没有更多的操作。<br>
+在尾递归中，递归调用不需要保持函数调用栈上的额外信息，因为递归调用的返回值就是最终结果，这使得尾递归比普通递归更高效。</p>
+</li>
+<li>
+<p>两种实现方式：<br>
+左边的版本：使用 while 循环实现平方和的计算。<br>
+右边的版本：使用尾递归实现平方和的计算，带有 part_sum 函数。</p>
+</li>
+</ol>
+<p>这段代码展示了两种不同的实现方式来计算整数的平方和。我们可以逐行理解这段代码：</p>
+<h3>第一部分：使用 <code class="notranslate">while</code> 循环实现的平方和</h3>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">sum_squares</span>(<span class="pl-c1">N</span>):
+    <span class="pl-s">"""The sum of K**2 for 1 &lt;= K &lt;= N."""</span>
+    <span class="pl-s1">accum</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+    <span class="pl-s1">k</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span>
+    <span class="pl-k">while</span> <span class="pl-s1">k</span> <span class="pl-c1">&lt;=</span> <span class="pl-c1">N</span>:
+        <span class="pl-s1">accum</span> <span class="pl-c1">=</span> <span class="pl-s1">accum</span> <span class="pl-c1">+</span> <span class="pl-s1">k</span><span class="pl-c1">**</span><span class="pl-c1">2</span>
+        <span class="pl-s1">k</span> <span class="pl-c1">=</span> <span class="pl-s1">k</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span>
+        <span class="pl-en">print</span>(<span class="pl-s">"accum ="</span>, <span class="pl-s1">accum</span>, <span class="pl-s">"/ k ="</span>, <span class="pl-s1">k</span>)
+    <span class="pl-k">return</span> <span class="pl-s1">accum</span>
+<span class="pl-en">print</span>(<span class="pl-en">sum_squares</span>(<span class="pl-c1">3</span>))</pre></div>
+<h4>1. <code class="notranslate">sum_squares(N)</code> 函数：</h4>
+<ul>
+<li><strong>功能</strong>：该函数计算从 1 到 <code class="notranslate">N</code> 之间所有整数的平方和。</li>
+<li><strong>参数</strong>：<code class="notranslate">N</code> 是计算的上限。</li>
+</ul>
+<h4>2. 代码分析：</h4>
+<ul>
+<li><strong>初始化</strong>：
+<ul>
+<li><code class="notranslate">accum = 0</code>：用来累加平方和的变量。</li>
+<li><code class="notranslate">k = 1</code>：<code class="notranslate">k</code> 用来循环遍历从 1 到 <code class="notranslate">N</code> 的整数。</li>
+</ul>
+</li>
+<li><strong><code class="notranslate">while k &lt;= N</code></strong>：这是一个循环，条件是当 <code class="notranslate">k</code> 小于等于 <code class="notranslate">N</code> 时继续循环。
+<ul>
+<li>在每次循环中：
+<ul>
+<li><code class="notranslate">accum = accum + k**2</code>：将 <code class="notranslate">k</code> 的平方加到 <code class="notranslate">accum</code> 中。</li>
+<li><code class="notranslate">k = k + 1</code>：递增 <code class="notranslate">k</code>，确保循环继续。</li>
+<li><code class="notranslate">print("accum =", accum, "/ k =", k)</code>：打印当前的累加值和 <code class="notranslate">k</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：当 <code class="notranslate">k</code> 超过 <code class="notranslate">N</code> 时，退出循环，返回最终的 <code class="notranslate">accum</code> 值。</li>
+</ul>
+<h4>3. <code class="notranslate">sum_squares(3)</code> 执行：</h4>
+<ul>
+<li>对于 <code class="notranslate">N = 3</code>，程序执行时将计算 <code class="notranslate">1^2 + 2^2 + 3^2</code>。</li>
+<li>输出：
+<pre class="notranslate"><code class="notranslate">accum = 1 / k = 2
+accum = 5 / k = 3
+accum = 14 / k = 4
+</code></pre>
+最终结果是 <code class="notranslate">14</code>，即 <code class="notranslate">1^2 + 2^2 + 3^2 = 14</code>。</li>
+</ul>
+<h3>第二部分：递归实现的平方和</h3>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">sum_squares</span>(<span class="pl-c1">N</span>):
+    <span class="pl-k">def</span> <span class="pl-en">part_sum</span>(<span class="pl-s1">accum</span>, <span class="pl-s1">k</span>):
+        <span class="pl-k">if</span> <span class="pl-s1">k</span> <span class="pl-c1">&lt;=</span> <span class="pl-c1">N</span>:
+            <span class="pl-k">return</span> <span class="pl-en">part_sum</span>(<span class="pl-s1">accum</span> <span class="pl-c1">+</span> <span class="pl-s1">k</span><span class="pl-c1">**</span><span class="pl-c1">2</span>, <span class="pl-s1">k</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span>)
+        <span class="pl-k">else</span>:
+            <span class="pl-k">return</span> <span class="pl-s1">accum</span>
+    <span class="pl-k">return</span> <span class="pl-en">part_sum</span>(<span class="pl-c1">0</span>, <span class="pl-c1">1</span>)
+<span class="pl-en">print</span>(<span class="pl-en">sum_squares</span>(<span class="pl-c1">3</span>))</pre></div>
+<h4>1. <code class="notranslate">sum_squares(N)</code> 函数：</h4>
+<ul>
+<li><strong>功能</strong>：与前一个函数相同，计算从 1 到 <code class="notranslate">N</code> 之间所有整数的平方和。</li>
+</ul>
+<h4>2. 代码分析：</h4>
+<ul>
+<li><strong>递归方式</strong>：这个实现方式使用了递归来计算平方和。</li>
+<li><strong><code class="notranslate">part_sum(accum, k)</code></strong>：
+<ul>
+<li><code class="notranslate">accum</code> 是累积平方和的变量。</li>
+<li><code class="notranslate">k</code> 是当前处理的整数。</li>
+</ul>
+</li>
+<li><strong>递归步骤</strong>：
+<ul>
+<li>如果 <code class="notranslate">k &lt;= N</code>，则递归调用 <code class="notranslate">part_sum(accum + k**2, k + 1)</code>，即将 <code class="notranslate">k</code> 的平方加到 <code class="notranslate">accum</code> 中，然后处理下一个整数 <code class="notranslate">k + 1</code>。</li>
+<li>如果 <code class="notranslate">k &gt; N</code>，则返回当前的 <code class="notranslate">accum</code>，结束递归。</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：最终通过 <code class="notranslate">part_sum(0, 1)</code> 开始递归，累加所有整数的平方和。</li>
+</ul>
+<h4>3. <code class="notranslate">sum_squares(3)</code> 执行：</h4>
+<ul>
+<li>对于 <code class="notranslate">N = 3</code>，递归过程如下：
+<ul>
+<li>第一次调用 <code class="notranslate">part_sum(0, 1)</code>，计算 <code class="notranslate">0 + 1^2</code>，递归到 <code class="notranslate">part_sum(1, 2)</code>。</li>
+<li>第二次调用 <code class="notranslate">part_sum(1, 2)</code>，计算 <code class="notranslate">1 + 2^2</code>，递归到 <code class="notranslate">part_sum(5, 3)</code>。</li>
+<li>第三次调用 <code class="notranslate">part_sum(5, 3)</code>，计算 <code class="notranslate">5 + 3^2</code>，递归到 <code class="notranslate">part_sum(14, 4)</code>。</li>
+<li>最后调用 <code class="notranslate">part_sum(14, 4)</code>，由于 <code class="notranslate">k &gt; 3</code>，返回 <code class="notranslate">14</code>。</li>
+</ul>
+</li>
+</ul>
+<p>最终返回值为 <code class="notranslate">14</code>，即 <code class="notranslate">1^2 + 2^2 + 3^2 = 14</code>。</p>
+<h3>总结：</h3>
+<ul>
+<li>第一部分使用了 <code class="notranslate">while</code> 循环来迭代计算平方和，打印每一步的累加值。</li>
+<li>第二部分使用递归来计算平方和，每次递归时计算当前数字的平方并将其加到累积和中。</li>
+</ul>
+<ol start="4">
+<li>尾递归的特点：<br>
+右边的递归实现是尾递归，因为递归调用是函数的最后一步，返回的就是递归调用的结果。<br>
+尾递归的好处是它可以被编译器或解释器优化为迭代过程，从而减少栈空间的使用，避免栈溢出。</li>
+<li>总结：<br>
+尾递归与普通递归的主要区别在于递归调用是否是最后执行的操作。在尾递归中，递归调用不需要保留函数调用栈中的额外信息，因此可以进行优化，减少内存消耗。<br>
+该技巧也可以应用到 while 循环中，将其转化为递归形式。</li>
+</ol></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
