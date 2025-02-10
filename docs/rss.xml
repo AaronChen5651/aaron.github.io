@@ -1,7 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>AARON's BLOG</title><link>https://AaronChen5651.github.io/aaron.github.io</link><description> </description><copyright>AARON's BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://AaronChen5651.github.io/aaron.github.io</link></image><lastBuildDate>Mon, 10 Feb 2025 03:21:53 +0000</lastBuildDate><managingEditor>AARON's BLOG</managingEditor><ttl>60</ttl><webMaster>AARON's BLOG</webMaster><item><title>cs61a番外：汉诺塔问题以及为什么不敢写递归？</title><link>https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-han-nuo-ta-wen-ti-yi-ji-wei-shen-me-bu-gan-xie-di-gui-%EF%BC%9F.html</link><description>![Image](https://github.com/user-attachments/assets/4d662f8b-77e6-4269-91e9-d6dd10876186)
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>AARON's BLOG</title><link>https://AaronChen5651.github.io/aaron.github.io</link><description> </description><copyright>AARON's BLOG</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://AaronChen5651.github.io/aaron.github.io</link></image><lastBuildDate>Mon, 10 Feb 2025 16:13:37 +0000</lastBuildDate><managingEditor>AARON's BLOG</managingEditor><ttl>60</ttl><webMaster>AARON's BLOG</webMaster><item><title>cs61a番外：汉诺塔问题以及为什么不敢写递归？</title><link>https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-han-nuo-ta-wen-ti-yi-ji-wei-shen-me-bu-gan-xie-di-gui-%EF%BC%9F.html</link><description>![Image](https://github.com/user-attachments/assets/4d662f8b-77e6-4269-91e9-d6dd10876186)
 
-汉诺塔（Tower of Hanoi）问题可以用递归解决的原因在于它满足**递归定义的基本特性**——问题可以分解为更小的相同问题，并且有明确的终止条件。</description><guid isPermaLink="true">https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-han-nuo-ta-wen-ti-yi-ji-wei-shen-me-bu-gan-xie-di-gui-%EF%BC%9F.html</guid><pubDate>Mon, 10 Feb 2025 03:21:31 +0000</pubDate></item><item><title>cs61a番外：关于递归与回溯的解析</title><link>https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-guan-yu-di-gui-yu-hui-su-de-jie-xi.html</link><description>示例：倒序打印
+汉诺塔（Tower of Hanoi）问题可以用递归解决的原因在于它满足**递归定义的基本特性**——问题可以分解为更小的相同问题，并且有明确的终止条件。</description><guid isPermaLink="true">https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-han-nuo-ta-wen-ti-yi-ji-wei-shen-me-bu-gan-xie-di-gui-%EF%BC%9F.html</guid><pubDate>Mon, 10 Feb 2025 03:21:31 +0000</pubDate></item><item><title>cs61a番外：关于递归及其优化的问题</title><link>https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-guan-yu-di-gui-ji-qi-you-hua-de-wen-ti.html</link><description>### **1.递归的一种优化方法：缓存优化（减少重复计算），以斐波那契数列为例**
+
+
+**计算斐波那契数列**
+Python 代码：
+```python
+def fibonacci(n):
+    if n == 0:  # 终止条件
+        return 0
+    if n == 1:  # 终止条件
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)  # 递归调用
+```
+**递归过程示意**
+```
+fibonacci(5)
+= fibonacci(4) + fibonacci(3)
+= (fibonacci(3) + fibonacci(2)) + (fibonacci(2) + fibonacci(1))
+= ((fibonacci(2) + fibonacci(1)) + fibonacci(2)) + (fibonacci(2) + 1)
+= (((fibonacci(1) + fibonacci(0)) + fibonacci(1)) + fibonacci(2)) + (fibonacci(2) + 1)
+= (((1 + 0) + 1) + fibonacci(2)) + (fibonacci(2) + 1)
+= (((1 + 0) + 1) + ((1 + 0) + 1)) + (((1 + 0) + 1) + 1)
+= 5
+```
+**缺点：重复计算！** 可以用 **缓存优化**。</description><guid isPermaLink="true">https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-guan-yu-di-gui-ji-qi-you-hua-de-wen-ti.html</guid><pubDate>Thu, 06 Feb 2025 01:27:45 +0000</pubDate></item><item><title>cs61a番外：关于递归与回溯的解析</title><link>https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-guan-yu-di-gui-yu-hui-su-de-jie-xi.html</link><description>示例：倒序打印
 以 swipe 函数为例。</description><guid isPermaLink="true">https://AaronChen5651.github.io/aaron.github.io/post/cs61a-fan-wai-%EF%BC%9A-guan-yu-di-gui-yu-hui-su-de-jie-xi.html</guid><pubDate>Sun, 19 Jan 2025 13:02:07 +0000</pubDate></item><item><title>UC Berkeley CS61A Sping 2021 Lecture 7 Tree Recursion</title><link>https://AaronChen5651.github.io/aaron.github.io/post/UC%20Berkeley%20CS61A%20Sping%202021%20Lecture%207%20Tree%20Recursion.html</link><description>树形递归
 
 **树形递归（Tree Recursion）** 是指递归调用不仅仅是调用自身一次，而是调用自己多个次数，从而形成一个类似树状的结构。</description><guid isPermaLink="true">https://AaronChen5651.github.io/aaron.github.io/post/UC%20Berkeley%20CS61A%20Sping%202021%20Lecture%207%20Tree%20Recursion.html</guid><pubDate>Sat, 18 Jan 2025 13:24:57 +0000</pubDate></item><item><title>UC Berkeley CS61A Sping 2021 Lecture 6 Recursion</title><link>https://AaronChen5651.github.io/aaron.github.io/post/UC%20Berkeley%20CS61A%20Sping%202021%20Lecture%206%20Recursion.html</link><description>![Image](https://github.com/user-attachments/assets/81cc75a8-4b1a-4ffe-9447-7f8526951a8b)
